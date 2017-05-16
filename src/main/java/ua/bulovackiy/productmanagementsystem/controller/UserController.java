@@ -88,12 +88,21 @@ public class UserController {
     @RequestMapping(value = "/welcome/admin", method = RequestMethod.POST)
     public String adminWelcome(@ModelAttribute("productForm") Product product, Model model) {
         productService.save(product);
+
         return "redirect:/welcome";
     }
 
     @RequestMapping(value = "/welcome/remove/{id}")
-    public String removeProduct(@PathVariable("id") Long id){
+    public String removeProduct(@PathVariable("id") Long id) {
         productService.delete(id);
         return "redirect:/welcome";
+    }
+
+    @RequestMapping(value = "/welcome/update/{id}")
+    public String updateProduct(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("productForm", productService.findById(id));
+        model.addAttribute("listProduct", productService.getAllProduct());
+
+        return "welcome";
     }
 }

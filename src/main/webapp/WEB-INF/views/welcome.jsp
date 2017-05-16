@@ -50,6 +50,7 @@
             <c:choose>
                 <c:when test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
                     <th width="60">Delete</th>
+                    <th width="60">Update</th>
                 </c:when>
             </c:choose>
         </tr>
@@ -64,6 +65,7 @@
                 <c:choose>
                     <c:when test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
                         <td><a href="<c:url value="/welcome/remove/${product.id}"/>">Delete</a></td>
+                        <td><a href="<c:url value="/welcome/update/${product.id}"/>">Update</a></td>
                     </c:when>
                 </c:choose>
             </tr>
@@ -88,7 +90,7 @@
                             </form:label>
                         </td>
                         <td>
-                            <form:input path="id" readonly="true" size="8" disabled="true"/>
+                            <form:input path="id" readonly="true" disabled="true"/>
                             <form:hidden path="id"/>
                         </td>
                     </tr>
